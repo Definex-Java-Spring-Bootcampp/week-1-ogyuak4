@@ -100,5 +100,18 @@ public class Main {
             System.out.println("No applications found.");
         }
 
+        List<Application> applicationsInLastMonth = Application.listApplicationsInLastMonth(allApplicationList);
+
+        // Son bir aylık yapılan başvuruları print ediyoruz
+        System.out.println("Applications made in the last month:");
+        for (Application application : applicationsInLastMonth) {
+            System.out.println(application);
+        }
+
+
+
     }
+
+
+
 }

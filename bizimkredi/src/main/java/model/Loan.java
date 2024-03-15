@@ -1,8 +1,9 @@
 package model;
 
 import enums.LoanType;
-
+import model.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 public abstract class Loan implements Product {
 
@@ -66,4 +67,7 @@ public abstract class Loan implements Product {
                 ", interestRate=" + interestRate +
                 '}';
     }
+
+
+
 }

@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import java.util.ArrayList;
 
 
 public class Application {
@@ -102,4 +102,25 @@ public class Application {
 
         return userWithMostApplications;
     }
+
+    // Son bir aylık yapılan başvuruları listeleyen method
+    public static List<Application> listApplicationsInLastMonth(List<Application> applications) {
+        List<Application> applicationsInLastMonth = new ArrayList<>();
+
+        // mevcut tarih alınıyor
+        LocalDateTime currentDate = LocalDateTime.now();
+
+        // 1 ay öncenin tarihi hesaplanıyor
+        LocalDateTime oneMonthAgo = currentDate.minusMonths(1);
+
+        // son 1 ay içinde yapılıp yapılmadığı kontrol ediliyor
+        for (Application application : applications) {
+            if (application.getLocalDateTime().isAfter(oneMonthAgo)) {
+                applicationsInLastMonth.add(application);
+            }
+        }
+
+        return applicationsInLastMonth;
+    }
+
 }
