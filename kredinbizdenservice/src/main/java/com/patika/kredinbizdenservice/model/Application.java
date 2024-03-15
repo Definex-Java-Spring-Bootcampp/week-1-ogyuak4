@@ -4,9 +4,11 @@ import com.patika.kredinbizdenservice.enums.ApplicationStatus;
 import com.patika.kredinbizdenservice.model.Loan;
 import com.patika.kredinbizdenservice.model.Product;
 import com.patika.kredinbizdenservice.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.LocalDateTime;
+
 
 public class Application {
     private Loan loan;
@@ -17,6 +19,7 @@ public class Application {
 
     private Application() {
     }
+
 
     /*
     public Application(CreditCard creditCard, User user, LocalDateTime localDateTime) {
