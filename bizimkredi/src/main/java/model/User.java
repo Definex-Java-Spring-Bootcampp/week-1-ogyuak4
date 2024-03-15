@@ -1,7 +1,9 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class User {
@@ -15,6 +17,9 @@ public class User {
     private Boolean isActive;
     private List<Application> applicationList;
 
+    // // Static set eklendi ki kaydolan emailleri kayıt altına alıp bakabilelim
+    private static Set<String> registeredEmails = new HashSet<>();
+
     public User(String name, String surname, LocalDate birthDate, String email, String password, String phoneNumber, Boolean isActive) {
         this.name = name;
         this.surname = surname;
@@ -23,6 +28,10 @@ public class User {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.isActive = isActive;
+        if (registeredEmails.contains(email)) {
+            throw new IllegalArgumentException("Email address already registered.");
+        }
+        registeredEmails.add(email); // email register ediliyor
     }
 
     public User(String name, String surname, String email, String password, String phoneNumber, Boolean isActive) {
@@ -32,6 +41,10 @@ public class User {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.isActive = isActive;
+        if (registeredEmails.contains(email)) {
+            throw new IllegalArgumentException("Email address already registered.");
+        }
+        registeredEmails.add(email); // email register ediliyor
     }
 
     public String getName() {
@@ -96,5 +109,12 @@ public class User {
 
     public void setApplicationList(List<Application> applicationList) {
         this.applicationList = applicationList;
+    }
+    public static Set<String> getRegisteredEmails() {
+        return registeredEmails;
+    }
+
+    public static void setRegisteredEmails(Set<String> registeredEmails) {
+        User.registeredEmails = registeredEmails;
     }
 }

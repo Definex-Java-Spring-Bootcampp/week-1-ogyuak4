@@ -11,13 +11,13 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        User userCemal = new User("cemal","yılmaz" , "password@gmail.com",
+        User userCemal = new User("cemal","yılmaz" , "password1@gmail.com",
                 "3210", "05542312319", true );
-        User userHaso = new User("hasan","yılar" , "password@gmail.com",
+        User userHaso = new User("hasan","yılar" , "password2@gmail.com",
                 "3211", "05542312318", true );
-        User userMurtaza = new User("murtaza","yılmazlar" , "password@gmail.com",
+        User userMurtaza = new User("murtaza","yılmazlar" , "password3@gmail.com",
                 "3212", "05542312315", true );
-        User userHatice = new User("hatice","yılanlaroğulları" , "password@gmail.com",
+        User userHatice = new User("hatice","yılanlaroğulları" , "password4@gmail.com",
                 "3213", "05542312331", true );
         List<Loan> akBankLoadList= new ArrayList<>();
         akBankLoadList.add(new ConsumerLoan(new BigDecimal(10000),10,3.51));
