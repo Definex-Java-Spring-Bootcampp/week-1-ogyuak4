@@ -4,11 +4,26 @@ import enums.LoanType;
 
 import java.math.BigDecimal;
 
-public class Loan {
+public abstract class Loan implements Product {
+
     private BigDecimal amount;
     private Integer installment;
     private Bank bank;
     private Double interestRate;
+    // private Campaign campaign; // kampanyalı kredileri üstte çıkart
+
+    //sponsorlu kampanyaları üstte çıkart
+
+    public Loan() {
+    }
+
+    public Loan(BigDecimal amount, Integer installment, Double interestRate) {
+        this.amount = amount;
+        this.installment = installment;
+        this.interestRate = interestRate;
+    }
+
+    abstract void calculate(BigDecimal amount, int installment);
 
     public BigDecimal getAmount() {
         return amount;
@@ -40,5 +55,15 @@ public class Loan {
 
     public void setInterestRate(Double interestRate) {
         this.interestRate = interestRate;
+    }
+
+    @Override
+    public String toString() {
+        return "Loan{" +
+                "amount=" + amount +
+                ", installment=" + installment +
+                ", bank=" + bank +
+                ", interestRate=" + interestRate +
+                '}';
     }
 }

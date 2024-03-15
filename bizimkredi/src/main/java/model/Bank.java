@@ -1,10 +1,12 @@
 package model;
-
+import java.util.List;
 import enums.LoanType;
 
 public class Bank {
-    private String name;
 
+    private String name;
+    private List<Loan> loanList;
+    private List<CreditCard> creditCards;
 
     public String getName() {
         return name;
@@ -12,5 +14,21 @@ public class Bank {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Loan> getLoanList() {
+        return loanList;
+    }
+
+    public void setLoanList(List<Loan> loanList) {
+        this.loanList = loanList;
+    }
+
+    @Override
+    public String toString() {
+        return "Bank{" +
+                "name='" + name + '\'' +
+                ", loanList=" + loanList +
+                '}';
     }
 }
