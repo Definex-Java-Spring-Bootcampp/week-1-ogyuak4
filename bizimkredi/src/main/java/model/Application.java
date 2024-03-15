@@ -3,6 +3,11 @@ package model;
 import enums.*;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+
 
 public class Application {
 
@@ -77,5 +82,24 @@ public class Application {
                 ", localDateTime=" + localDateTime +
                 ", applicationStatus=" + applicationStatus +
                 '}';
+    }
+    // en fazla application yapmış olan kullanıcıyı bulan methodu yazalım:
+    public static User findUserWithMostApplications(List<Application> applications) {
+        // kullanıcı başına düşen application sayısını mapleme işlemi
+        Map<User, Integer> userApplicationCount = new HashMap<>();
+
+        // kullanıcı başına düşen applicationı saymak için:
+        for (Application application : applications) {
+            User user = application.getUser();
+            userApplicationCount.put(user, userApplicationCount.getOrDefault(user, 0) + 1);
+        }
+
+        // max application sayısına sahip useri bulmak için:
+        User userWithMostApplications = userApplicationCount.entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse(null);
+
+        return userWithMostApplications;
     }
 }

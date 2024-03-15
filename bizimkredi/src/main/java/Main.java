@@ -91,5 +91,14 @@ public class Main {
 
         allApplicationList.forEach(System.out::println);
 
+        User userWithMostApplications = Application.findUserWithMostApplications(allApplicationList);
+
+        // En çok başvuru yapan kullanıcıyı bulan methodun sonucunu yazalım:
+        if (userWithMostApplications != null) {
+            System.out.println("User with the most applications: " + userWithMostApplications.getName());
+        } else {
+            System.out.println("No applications found.");
+        }
+
     }
 }
