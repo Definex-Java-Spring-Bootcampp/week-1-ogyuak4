@@ -1,7 +1,10 @@
 package model;
 
 import java.math.BigDecimal;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import model.*;
 
 public class CreditCard implements Product{
 
@@ -46,4 +49,14 @@ public class CreditCard implements Product{
                 ", bank=" + bank +
                 '}';
     }
+
+    // Kredi kartı tekliflerini kampanya sayısına göre çoktan aza doğru listeleyen bir metod
+    public static List<CreditCard> listCreditCardOffersByCampaignCount(List<CreditCard> creditCards) {
+        // Sort the credit cards based on the number of campaigns
+        return creditCards.stream()
+                .sorted(Comparator.comparingInt(card -> ((CreditCard) card).getCampaignList().size()).reversed())
+                .collect(Collectors.toList());
+    }
+
+
 }

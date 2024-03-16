@@ -110,6 +110,30 @@ public class Main {
 
 
 
+        List<Product> products = new ArrayList<>();
+        products.add(creditCard1);
+        products.add(creditCard2);
+        products.add(creditCard3);
+
+        List<CreditCard> creditCards = new ArrayList<>();
+        for (Product product : products) {
+            if (product instanceof CreditCard) {
+                creditCards.add((CreditCard) product);
+            }
+        }
+
+        // kredi kartlarını kampanya sayılarına göre sort etmek:
+        List<CreditCard> sortedCreditCards = CreditCard.listCreditCardOffersByCampaignCount(creditCards);
+
+        // ve print etmek:
+        System.out.println("Credit card offers sorted by the number of campaigns:");
+        for (CreditCard creditCard : sortedCreditCards) {
+            System.out.println(creditCard);
+        }
+
+
+
+
     }
 
 
