@@ -177,9 +177,48 @@ public class Main {
         int totalCustomers = Customer.getTotalCustomers();
         System.out.println("Total number of customers: " + totalCustomers);
 
+        List<Order> orders = new ArrayList<>();
+        orders.add(order1);
+        orders.add(order2);
+        orders.add(order3);
 
+        //  "Cem" tarafından satın alınan ürün sayısı
+        int totalProductsByCem = 0;
+        for (Order order : orders) {
+            if (order.getCustomer().getName().equals("Cem")) {
+                totalProductsByCem += order.getTotalProducts();
+            }
+        }
 
+        System.out.println("Total number of products purchased by customers named Cem: " + totalProductsByCem);
 
+        // İsmi Cem olup yaşı 30’dan küçük 25’ten büyük müşterilerin toplam alışveriş tutarını
+        double totalShoppingAmount = 0;
+        for (Order order : orders) {
+            Customer customer = order.getCustomer();
+            if (customer.getName().equals("Cem") && customer.getAge() > 25 && customer.getAge() < 30) {
+                totalShoppingAmount += order.getTotalShoppingAmount();
+            }
+        }
+
+        System.out.println("Total shopping amount of customers named Cem, younger than 30 and older than 25: $" + totalShoppingAmount);
+
+        // 1500 TL üzerindeki faturalar listeleniyor
+        List<Invoice> invoicesOver1500 = new ArrayList<>();
+
+        // 1500 TL üzerindeki faturalar kontrol ediliyor
+        if (invoice1.getTotalAmount() > 1500) {
+            invoicesOver1500.add(invoice1);
+        }
+        if (invoice2.getTotalAmount() > 1500) {
+            invoicesOver1500.add(invoice2);
+        }
+
+        //  1500 TL üzerindeki faturalar
+        System.out.println("Invoices over 1500 TL in the system:");
+        for (Invoice invoice : invoicesOver1500) {
+            System.out.println(invoice);
+        }
 
 
     }
