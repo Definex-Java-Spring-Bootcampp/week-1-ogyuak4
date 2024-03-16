@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        User userCemal = new User("cemal","yılmaz" , "password1@gmail.com",
+        User userCem = new User("cem","yılmaz" , "cemdrman@gmail.com",
                 "3210", "05542312319", true );
         User userHaso = new User("hasan","yılar" , "password2@gmail.com",
                 "3211", "05542312318", true );
@@ -60,7 +60,7 @@ public class Main {
 
         loanList.forEach(System.out::println);
 
-        Application application1=new Application(consumerLoanAkBank, userCemal, LocalDateTime.now());
+        Application application1=new Application(consumerLoanAkBank, userCem, LocalDateTime.now());
         Application application2=new Application(consumerLoanFinans, userHaso, LocalDateTime.now());
         Application application3=new Application(consumerLoanGaranti, userHatice, LocalDateTime.now());
         Application application4=new Application(consumerLoanAkBank, userMurtaza, LocalDateTime.now());
@@ -77,10 +77,10 @@ public class Main {
         //((CreditCard)creditCard1).getFee();
 
 
-        Application application5=new Application(creditCard1,userCemal,LocalDateTime.now());
+        Application application5=new Application(creditCard1,userCem,LocalDateTime.now());
         Application application6=new Application(creditCard2,userHaso,LocalDateTime.now());
         Application application7=new Application(creditCard3,userMurtaza,LocalDateTime.now());
-        Application application8=new Application(houseLoan,userCemal,LocalDateTime.now());
+        Application application8=new Application(houseLoan,userCem,LocalDateTime.now());
 
         List<Application> allApplicationList= new ArrayList<>(applicationsList);
 
@@ -131,7 +131,13 @@ public class Main {
             System.out.println(creditCard);
         }
 
+        List<Application> userApplications = Application.listApplicationsByUserEmail(allApplicationList, "cemdrman@gmail.com");
 
+        // cemdrman gmaili ile eşleşen applicationlar konsola yazdırılır
+        System.out.println("Applications of user with email cemdrman@gmail.com:");
+        for (Application application : userApplications) {
+            System.out.println(application);
+        }
 
 
     }

@@ -123,4 +123,19 @@ public class Application {
         return applicationsInLastMonth;
     }
 
+    public static List<Application> listApplicationsByUserEmail(List<Application> applications, String email) {
+        List<Application> userApplications = new ArrayList<>();
+
+        // Iterate işlemi gerçekleştirilir
+        for (Application application : applications) {
+            // spesifik olarak belirtilen email adresi ile eşleşip eşleşmediğine bakılır
+            if (application.getUser().getEmail().equals(email)) {
+                // eşleşiyorsa applicationlar seçilir
+                userApplications.add(application);
+            }
+        }
+
+        return userApplications;
+    }
+
 }
