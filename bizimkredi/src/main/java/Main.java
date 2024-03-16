@@ -220,6 +220,15 @@ public class Main {
             System.out.println(invoice);
         }
 
+        List<User> userList = new ArrayList<>();
+        userList.add(userHatice);
+        userList.add(userHaso);
+        userList.add(userMurtaza);
+        userList.add(userCem);
+        User userWithHighestLoan = User.findUserWithHighestLoan(userList);
+        System.out.println("User with the highest loan amount: " + userWithHighestLoan);
+        System.out.println("Total loan amount: " + userWithHighestLoan.calculateTotalLoanAmount());
+
 
     }
 }

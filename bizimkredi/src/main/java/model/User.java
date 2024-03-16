@@ -1,5 +1,6 @@
 package model;
 
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -139,4 +140,31 @@ public class User {
             return null;
         }
     }
+
+    public BigDecimal calculateTotalLoanAmount() {
+        BigDecimal totalLoanAmount = BigDecimal.ZERO;
+        if (applicationList != null) {
+            for (Application application : applicationList) {
+                if (application.getLoan() != null) {
+                    totalLoanAmount = totalLoanAmount.add(application.getLoan().getAmount());
+                }
+            }
+        }
+        return totalLoanAmount;
+    }
+
+    // Static method en yüksek loana sahip olan kullanıcının loan miktarını bulmak için eklendi
+    public static User findUserWithHighestLoan(List<User> userList) {
+        User userWithHighestLoan = userList.get(0);
+        BigDecimal highestLoanAmount = BigDecimal.ZERO;
+        for (User user : userList) {
+            BigDecimal totalLoanAmount = user.calculateTotalLoanAmount();
+            if (totalLoanAmount.compareTo(highestLoanAmount) > 0) {
+                highestLoanAmount = totalLoanAmount;
+                userWithHighestLoan = user;
+            }
+        }
+        return userWithHighestLoan;
+    }
+
 }
