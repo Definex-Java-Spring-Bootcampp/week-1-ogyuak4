@@ -1,6 +1,7 @@
 import model.*;
 import enums.*;
 
+import javax.naming.spi.ObjectFactory;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -140,8 +141,46 @@ public class Main {
         }
 
 
+        Customer customer1 = new Customer("Cem", "alice@example.com",24);
+        Customer customer2 = new Customer("Bob Johnson", "bob@example.com",18);
+        Customer customer3 = new Customer("Eve Brown", "eve@example.com",76);
+
+
+        ShopProduct product1 = new ShopProduct("Smartphone", "Electronics", 599.99, 15);
+        ShopProduct product2 = new ShopProduct("Tablet", "Electronics", 399.99, 20);
+        ShopProduct product3 = new ShopProduct("Watch", "Fashion", 1989.99, 30);
+
+
+        Order order1 = new Order(customer1);
+        order1.addProduct(product1);
+        order1.addProduct(product2);
+
+        Order order2 = new Order(customer2);
+        order2.addProduct(product2);
+        order2.addProduct(product3);
+
+        Order order3 = new Order(customer3);
+        order3.addProduct(product1);
+        order3.addProduct(product3);
+
+        // order başına toplam ücret hesaplanıyor
+        double totalAmount1 = product1.getPrice() + product2.getPrice();
+        double totalAmount2 = product2.getPrice() + product3.getPrice();
+        double totalAmount3 = product1.getPrice() + product3.getPrice();
+
+        // orderlar için fatura oluşturuluyor
+        Invoice invoice1 = new Invoice(order1, totalAmount1);
+        Invoice invoice2 = new Invoice(order2, totalAmount2);
+        Invoice invoice3 = new Invoice(order3, totalAmount3);
+
+        // Toplam müşteri sayısı
+        int totalCustomers = Customer.getTotalCustomers();
+        System.out.println("Total number of customers: " + totalCustomers);
+
+
+
+
+
+
     }
-
-
-
 }
